@@ -19,3 +19,19 @@ await page.waitForTimeout(3000);
 });
 
 
+test.only("Verify RadioBtn Action ", async function({page}) {
+    
+    await page.goto("https://testautomationpractice.blogspot.com/");
+
+    const maleRadioBtn : Locator =  page.locator('#male');
+    const femaleRadioBtn : Locator = page.getByLabel('Female');
+
+    await expect(maleRadioBtn).toBeVisible();
+    await expect(maleRadioBtn).toBeEnabled();
+    await maleRadioBtn.check();
+    expect(await maleRadioBtn.isChecked()).toBe(true);
+    await femaleRadioBtn.check();
+    await page.waitForTimeout(2000);
+
+
+})
