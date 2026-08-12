@@ -79,7 +79,7 @@ test.only("CheckBoxAction",async function({page}){
            }
         }   
 
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(5000);
 
     //6 select checkbox randomly
 
@@ -107,7 +107,8 @@ test.only("CheckBoxAction",async function({page}){
         }
     }
 
-     await page.waitForTimeout(5000);
+     await page.waitForTimeout(4000);
+
 
 });
 
