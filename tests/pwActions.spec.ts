@@ -34,7 +34,7 @@ test("Verify RadioBtn Action ", async function({page}) {
     await page.waitForTimeout(2000);
 })
 
-test.only("CheckBoxAction",async function({page}){
+test("CheckBoxAction",async function({page}){
 
     await page.goto("https://testautomationpractice.blogspot.com/");
     const sundayCheckbox :Locator = page.getByLabel('sunday');
