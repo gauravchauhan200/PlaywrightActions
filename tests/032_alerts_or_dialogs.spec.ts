@@ -18,20 +18,57 @@ test.describe('Handle Dialogs Validation/Alerts',()=>{
         await  page.getByRole('button',{name:'Simple'}).click();
     })
 
+    //  Handling confirmation and alert together
+
     test('Confirmation dialog',async({page})=>{
         page.on('dialog',(dialog)=>{
-            expect(dialog.type()).toBe('confirm');
-            expect(dialog.message()).toContain('Confirm?');
-            console.log(dialog.message());
-            dialog.dismiss();//dialog.accept();
+        //    expect(dialog.type()).toBe('confirm');
+        //    expect(dialog.message()).toContain('Confirm?');
+        //    console.log(dialog.message());
+        //    dialog.accept();
+
+            console.log(`Dialog type: ${dialog.type()}`);
+            console.log(`Dialog message: ${dialog.message()}`);
+
+            if (dialog.type() === 'confirm') {
+                expect(dialog.message()).toContain('Confirm?');
+                dialog.accept();
+            } 
+            else if (dialog.type() === 'alert') {
+                expect(dialog.message()).toContain('Confirmed');
+                dialog.accept();
+            }
         })
         await page.getByRole('button',{name:'Confirm'}).click();
-
-
-
     })
 
 
+    test('Prompt dialog',async({page})=>{
+        page.on('dialog',(dialog)=>{
+
+           // console.log(`Dialog type: ${dialog.type()}`);
+           // console.log(`Dialog message is : ${dialog.message()}`);
+           
+            if(dialog.type()==='prompt')
+            { 
+                console.log(`Dialog type: ${dialog.type()}`);             
+                console.log(`Dialog message is : ${dialog.message()}`);
+                dialog.accept('Gaurav');
+            }
+            else if(dialog.type()==='alert')
+            {
+                console.log(`Dialog type is:${dialog.type()}`);
+                console.log(`Dialog message is : ${dialog.message()}`);
+                dialog.accept();
+            }
+        })
+        await page.getByRole('button',{name:'Prompt'}).click();
+        await page.waitForTimeout(2000);
+    })
+
+
+
+    
 
 
 
