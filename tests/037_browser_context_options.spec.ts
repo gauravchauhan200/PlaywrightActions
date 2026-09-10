@@ -1,31 +1,35 @@
-//Browser Context Level Settings
+import { test } from '@playwright/test'
 
-import { test } from '@playwright/test';
+// Browser context level setting
 
-test("Browser context options/settings demo", async ({ browser }) => {
+test('Browser context option',async ({browser})=>{
 
     const context = await browser.newContext(
-        //Drak theme
-        {
-            colorScheme: 'dark',
 
-            // Browser Permissions
-            permissions: [
+        
+        {
+            // Dark Theme
+            colorScheme: 'dark',
+            
+            //Browser Permissios
+            permissions:[
                 'notifications',
                 'geolocation',
                 'microphone'
             ],
 
-            // Language
+            // language
+
             locale: 'en-IN',
 
-            // Time Zone
+            //Time Zone
             timezoneId: 'Asia/Kolkata',
 
-            // Viewport Size
-            viewport: {
-                width: 1280,
-                height: 720
+            //view port size
+
+            viewport:{
+                width:1280,
+                height:720
             },
 
             // Fake GPS Location
@@ -34,10 +38,10 @@ test("Browser context options/settings demo", async ({ browser }) => {
                 longitude: 78.4583
             },
 
+            //Ignore HTTPS certificate errors
 
-            // Ignore HTTPS certificate errors
-            ignoreHTTPSErrors: true
-
+            ignoreHTTPSErrors:true
+    
         }
     )
 
@@ -45,11 +49,9 @@ test("Browser context options/settings demo", async ({ browser }) => {
     await page.goto('https://www.google.com/');
     //await page.goto("https://expired.badssl.com/");
 
-    await page.waitForTimeout(5000)
+    await page.waitForTimeout(5000)    
 
 })
-
-
 
 //Page Level Settings
 test("page options demo", async ({ page }) => {
