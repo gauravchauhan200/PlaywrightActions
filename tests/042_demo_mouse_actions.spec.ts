@@ -40,7 +40,7 @@ test('2.Right click/context click ', async ({ page }) => {
 
   
   //Handle dialog is optional, but if you want to verify the dialog message, you can uncomment the following code:
- page.on('dialog', (dialog) => {
+  page.on('dialog', (dialog) => {
           expect(dialog.message()).toContain('Quit');
           dialog.accept();
       });

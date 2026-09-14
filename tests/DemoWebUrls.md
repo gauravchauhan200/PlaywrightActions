@@ -1,3 +1,8 @@
+# https://sdetqa.vercel.app/autoplay
+# https://demo.guru99.com/test/drag_drop.html
+# https://gotranscript.com/text-compare
+# https://demowebshop.tricentis.com/
+
 # August 26
 # August 27
 # August 28

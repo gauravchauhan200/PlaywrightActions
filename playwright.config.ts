@@ -32,7 +32,7 @@ export default defineConfig({
     trace: 'on-first-retry',
    // testIdAttribute:'data-pw' //configured data-testid
     headless: false,
-  
+
   },
 
 
