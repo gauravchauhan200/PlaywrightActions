@@ -2,6 +2,8 @@
 # https://demo.guru99.com/test/drag_drop.html
 # https://gotranscript.com/text-compare
 # https://demowebshop.tricentis.com/
+# https://www.worldometers.info/geography/flags-of-the-world/
+# https://www.booksbykilo.in/new-books?pricerange=201to500
 
 # August 26
 # August 27
