@@ -56,9 +56,7 @@ test('handle frames', async ({page})=>{
     const txtName=page.frameLocator("frame[src='frame_1.html']").locator("input[name='mytext1']")
     await txtName.fill("John")
 
-
 })
-
 
 test('inner frames', async ({page})=>{
 

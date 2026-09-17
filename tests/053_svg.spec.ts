@@ -77,11 +77,6 @@ test.describe('SVG Handling',()=>{
             }
         }
         expect(maxHeight).toBe(70);
-
-
     })
-
-
-
 
 })
