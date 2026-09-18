@@ -7,35 +7,100 @@
 # https://shop.polymer-project.org/
 
 
-# August 26
-# August 27
-# August 28
-# August 29
 
-# August 30
-1. 25 handle dropdown
-2. 26 Handle dropdown
+Complete real-world daily workflow
+This is the sequence I'd recommend memorizing:
+# START OF DAY
 
-# August 31
-1. 27 Handle Staic webtable
-2. 28 handle dynamic table
+git status
+git branch --show-current
+git fetch origin
+git merge origin/main
 
-# September 1
-1. 29 Handling datePickers
-2. 30  Handling Dialogs
+# DEVELOP
+# Write/modify Playwright tests
 
-# September 2 TODAY
-1. 31 Browser cotext 
-2. 32 Handling Multiple tabs
+git status
+git diff
 
-# September 3
-1. 33 Handling Mouse keyboard
-2. 34 Scrolling technique
+# TEST
+npx playwright test
 
-# September 4
-1. 35 handing Shadow DOM &SVG
-2. 36 handlie frames
+# SAVE YOUR WORK
+git add .
+git commit -m "Add login automation tests"
 
-# September 5
-1. 37 Assertion and AutoWaiting
-2. 38 Cookies Storage
+# BEFORE PUSHING
+git fetch origin
+git merge origin/main
+
+# TEST AGAIN AFTER MERGE
+npx playwright test
+
+# PUSH
+git push origin feature/login-tests
+⭐ The golden sequence
+             DAILY GIT WORKFLOW
+
+                 START
+                   ↓
+              git status
+                   ↓
+           git fetch origin
+                   ↓
+         git merge origin/main
+                   ↓
+              WRITE CODE
+                   ↓
+            RUN PLAYWRIGHT
+                   ↓
+              git add .
+                   ↓
+             git commit
+                   ↓
+           git fetch origin
+                   ↓
+         git merge origin/main
+                   ↓
+       Resolve conflicts if any
+                   ↓
+          RUN PLAYWRIGHT AGAIN
+                   ↓
+              git push
+                   ↓
+                  PR
+                   ↓
+              CODE REVIEW
+                   ↓
+             MERGE TO MAIN
+One important team rule
+Don't do this:
+git checkout main
+# write automation code
+git push
+Instead:
+main
+  │
+  └── feature/login-tests
+             │
+             ├── Write Playwright tests
+             ├── Commit
+             ├── Update from main
+             ├── Test
+             └── Push
+                    │
+                    ↓
+                   PR
+                    │
+                    ↓
+                  main
+For a Playwright project, a very common branch naming pattern is:
+feature/login-tests
+feature/payment-tests
+feature/checkout-tests
+bugfix/login-failure
+bugfix/locator-issue
+If you remember only one thing, remember:
+Before PUSH → FETCH → MERGE main → RESOLVE → TEST → PUSH.
+
+That is the habit that will save you from many avoidable merge-conflict problems.
