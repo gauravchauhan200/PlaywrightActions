@@ -21,7 +21,7 @@ import {test, expect } from '@playwright/test'
 import fs from 'fs';
 
 
-const cookiesFile = './storage-data/cookies.data.json';
+const cookiesFile = './storage_data/cookies.data.json';
 const appURL = 'https://sdetqa.vercel.app/login_app';
 
 //make execution serial
