@@ -60,17 +60,17 @@ test('handle frames', async ({page})=>{
 
 test('inner frames', async ({page})=>{
 
-    // Open the Frames demo application
-    await page.goto("https://ui.vision/demo/webtest/frames/");
+        // Open the Frames demo application
+        await page.goto("https://ui.vision/demo/webtest/frames/");
 
-    // Parent frame
-    const frame3=page.frameLocator("frame[src='frame_3.html']")
-    await frame3.locator("input[name='mytext3']").fill("Welcome")
+        // Parent frame
+        const frame3=page.frameLocator("frame[src='frame_3.html']")
+        await frame3.locator("input[name='mytext3']").fill("Welcome")
 
-   //Child/inner frame
-   const childFrame=frame3.frameLocator('iframe')
+      //Child/inner frame
+      const childFrame=frame3.frameLocator('iframe')
 
-   await childFrame.getByRole('radio',{name:'I am a human'}).check()
-   await childFrame.getByRole('checkbox', { name: 'Form Autofilling' }).check();
+      await childFrame.getByRole('radio',{name:'I am a human'}).check()
+      await childFrame.getByRole('checkbox', { name: 'Form Autofilling' }).check();
 
 })

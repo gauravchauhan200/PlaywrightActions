@@ -5,7 +5,7 @@ Open browser → Login → Save Cookies
 Test 2:
 Open new browser → Load Cookies → Verify automatic login
 
- | Part              | Purpose                                                   |
+| Part               | Purpose                                                   |
 | ------------------ | --------------------------------------------------------- |
 | fs                 | Node.js File System module                                |
 | writeFileSync()    | Writes data to a file synchronously                       |
@@ -15,35 +15,33 @@ Open new browser → Load Cookies → Verify automatic login
 | null               | Includes all object properties (no custom filtering)      |
 | 2                  | Formats the JSON with 2-space indentation for readability |
 
-
-
 */
 
-import { test, expect } from '@playwright/test';
+import {test, expect } from '@playwright/test'
 import fs from 'fs';
 
-const cookieFile = './storage-data/cookies.data.json';
+
+const cookiesFile = './storage-data/cookies.data.json';
 const appURL = 'https://sdetqa.vercel.app/login_app';
 
-// makes execution serial
+//make execution serial
 test.describe.configure({mode:'serial'})
 
+test('Login and save cookies',async({browser})=>{
 
-test("Login and save cookies", async({browser})=>{
-   
     const context = await browser.newContext();
     const page = await context.newPage();
-    await page.goto(appURL)
+    await page.goto(appURL);
 
     //Login
-    await page.getByRole('textbox', { name: 'Username' }).fill('admin');
-    await page.getByRole('textbox', { name: 'Password' }).fill('admin123');
+    await page.getByRole('textbox',{name:'Username'}).fill('admin');
+    await page.getByRole('textbox',{name: 'Password'}).fill('admin123');
     await page.getByLabel('🍪 Cookie').check();
-    await page.getByRole('button', { name: 'Login' }).click();
-    await expect(page.getByText('Dashboard Welcome', { exact: true })).toBeVisible()
+    await page.getByRole('button',{name:'Login'}).click();
+    await expect(page.getByText('Dashboard Welcome')).toBeVisible();
 
     //Get all the cookies
-    const cookies=await context.cookies()
+    const cookies = await context.cookies();
 
     /*
         {
@@ -51,30 +49,31 @@ test("Login and save cookies", async({browser})=>{
          expiry:34-343-43
         }
   */
-     // object ----> JSON String
-    fs.writeFileSync(cookieFile, JSON.stringify(cookies, null, 2));
 
-    console.log('Cookies saved successfully.');
+    fs.writeFileSync(cookiesFile,JSON.stringify(cookies, null, 2));
 
-    await page.waitForTimeout(5000)
+    console.log('cookies saved successfully');
+
+    await page.waitForTimeout(2000);
 
 })
 
+test("Login using saved cookies",async({browser})=>{
 
-test("Login using saved cookies", async({browser})=>{
-   
     const context = await browser.newContext();
 
     //JSON String -- Object
-    const savedCookies=JSON.parse(fs.readFileSync(cookieFile, 'utf8'));
+    const savedCookies =JSON.parse(fs.readFileSync(cookiesFile,'utf8'));
 
-    context.addCookies(savedCookies)
+    context.addCookies(savedCookies);
 
     const page = await context.newPage();
-    await page.goto(appURL)
-   // No providing any login credentials
-    await expect(page.getByText('Dashboard Welcome', { exact: true })).toBeVisible()
+    await page.goto(appURL);
 
-     await page.waitForTimeout(5000)
+    //No providing any login credentials
+
+    await expect(page.getByText('Dashboard Welcome')).toBeVisible();
     
+    await page.waitForTimeout(2000);
+
 })
