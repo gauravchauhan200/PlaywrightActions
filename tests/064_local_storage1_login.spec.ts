@@ -24,7 +24,7 @@ test.describe.configure({mode:'serial'})
     })
 
     test('Login as user and check dashboard',async({browser})=>{
-
+        
         // Attaching the local storage
         const context = await browser.newContext({storageState:'./storage_data/user_data.json'})
 
@@ -37,5 +37,5 @@ test.describe.configure({mode:'serial'})
 
         await page.waitForTimeout(5000)
         await context.close();
-        
+
     })
