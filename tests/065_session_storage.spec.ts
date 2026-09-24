@@ -33,8 +33,8 @@ async function saveSessionStorage()
     fs.writeFileSync("./storage_data/session_data.json",JSON.stringify(sessionStorageData));
 
     console.log("session data captured....");
-    await browser.close()
+   // await browser.close()
    
 }
 
-    saveSessionStorage();
+    saveSessionStorage(); // calling function
