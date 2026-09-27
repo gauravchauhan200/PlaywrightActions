@@ -15,7 +15,7 @@ test('Login as admin and check dashboard',async({browser})=>{
         await context.addInitScript((storage) => {
             Object.keys(storage).forEach(key => {
                 sessionStorage.setItem(key, storage[key]);
-            });
+            }); 
         }, sessionStorageData);
     */
 
@@ -35,9 +35,9 @@ test('Login as admin and check dashboard',async({browser})=>{
     await expect(page.getByText('Dashboard Welcome', { exact: true })).toBeVisible();
     await expect(page.locator('#displayUser')).toContainText('admin');
 
-    await page.waitForTimeout(2000)
+    await page.waitForTimeout(2000);
 
-    await context.close()
+    await context.close();
 
 })
 
