@@ -1,8 +1,20 @@
-import { test, expect } from "@playwright/test";
+/*
+What is an iFrame?
+------------------
+An iframe (Inline Frame) is an HTML element that allows one web page 
+to be embedded inside another web page.
 
-test("Nested frames", async({page})=>{
+tag:   frame,  iframe
+  frameset  --> contains multiple frames
 
-await page.goto('https://sdetqa.vercel.app/autoplay');
+Examples:
+- YouTube videos
+- Payment gateways
+- Advertisements
+- External web pages
 
-// page.frameLocator('iframe').nth(0) - deprecated
-//page.frameLocator('iframe').first() - deprecated
+page.frame(locator)  ---> Not auto waited , not returns promise
+page.frameLocator(locator)  --- auto waited , await is not need (special case)
+page.frames()  -- retuns all the frames
+
+*/
