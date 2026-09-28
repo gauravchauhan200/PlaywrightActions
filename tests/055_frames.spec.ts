@@ -18,3 +18,21 @@ page.frameLocator(locator)  --- auto waited , await is not need (special case)
 page.frames()  -- retuns all the frames
 
 */
+import { test, expect } from "@playwright/test";
+
+test('handle frames', async ({page})=>{
+
+    // Open the Frames demo application
+    await page.goto("https://ui.vision/demo/webtest/frames/");
+
+    //Get all frames available on the page
+
+    const frames=page.frames()
+    console.log("Number fo frames:", frames.length)
+
+     // Verify total number of frames
+    expect(frames.length).toBe(7)
+
+
+    })
+    
