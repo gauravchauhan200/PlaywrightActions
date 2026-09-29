@@ -5,7 +5,9 @@
 # https://www.worldometers.info/geography/flags-of-the-world/
 # https://www.booksbykilo.in/new-books?pricerange=201to500
 # https://shop.polymer-project.org/
-# https://sdetqa.vercel.app/login_app  //Eg: cookies
+# https://sdetqa.vercel.app/login_app      //Eg: cookies
+# https://ui.vision/demo/webtest/frames/   //frames
+
 
 
 
