@@ -13,10 +13,10 @@ test("Nested frames", async({page})=>{
     await inputBox.fill('Welcome');
     await expect(inputBox).toHaveValue('Welcome');
 
-
 })
 
 test('External iframe loads the expected URL', async ({ page }) => {
+
     await page.goto('https://sdetqa.vercel.app/autoplay');
     
     // Get the second iframe on the page (index 1)
@@ -30,4 +30,5 @@ test('External iframe loads the expected URL', async ({ page }) => {
 
     //Verify that the Playwright logo is visible inside the iframe
     await expect(innerFrame.getByAltText('Playwright logo').first()).toBeVisible();
-  });
+  
+});
