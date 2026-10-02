@@ -186,3 +186,134 @@ test('State Assertion toBeFocused',async({ page })=>{
  await emailInput.focus();
  await expect(emailInput).toBeFocused();
 })
+
+//=======================================
+// TEXT ASSERTIONS
+//=======================================
+
+// Get the login window label 'Returning Customer'
+// Assert that the element contains the text "Customer"
+
+test('Text Assertion: toContainText',async({ page }) => {
+  await page.goto(LOGIN_URL);
+  const return_cust = page.locator('.returning-wrapper>div>strong');
+  await expect(return_cust).toContainText('Returning'); //partial match
+})
+
+// Get the heading 'Register'
+// Assert that the heading has the exact text "Register"
+
+test('Text Assertion: toHaveText',async({ page }) =>{
+  await page.goto(REGISTER_URL);
+  const heading = page.locator('h1');
+  await expect(heading).toHaveText('Register'); //exact match
+})
+
+// Get the email input and fill it
+// Assert that the input has the expected value
+
+test('Text Assertion: toHaveValue',async({ page }) =>{
+  await page.goto(LOGIN_URL);
+  const emailInput =  page.locator('#Email');
+  emailInput.fill('Enter email-Id');
+  await expect(emailInput).toHaveValue('Enter email-Id');
+})
+
+// Get categories
+// Assert that 'colors' have specific values
+// toHaveValues expects an array of values for the locator array
+
+test('Text Assertion: toHaveValues',async({ page }) => {
+  await page.goto('https://sdetqa.vercel.app/autoplay');
+  const colors = page.locator('#colors');
+  await colors.selectOption(["Red","Green"]);
+  await expect(colors).toHaveValues(["red","green"]);
+})
+
+//========================================
+// ATTRIBUTES & PROPERTIES ASSERTIONS
+//========================================
+
+test('Attributes Assertion: toContainClass', async ({ page }) => {
+  await page.goto(LOGIN_URL);
+  // Get the login button
+  const loginButton = page.locator('input[value="Log in"]');
+  // Assert that the button contains a specific class
+  await expect(loginButton).toContainClass('button-1');
+})
+
+test('Attributes Assertion: toHaveClass', async ({ page }) => {
+  await page.goto(REGISTER_URL);
+  // Get the register button
+  const registerButton = page.locator('#register-button');
+  // Assert that the button has the exact class
+  await expect(registerButton).toHaveClass('button-1 register-next-step-button');
+})
+
+// Get the login button
+// Assert that the button has a specific attribute with specific value
+
+test ('Attribute Assertion: toHaveAttribute',async({ page }) =>{
+  await page.goto(LOGIN_URL);
+  const loginBtn = page.locator('.login-button');
+  await expect(loginBtn).toHaveAttribute('type','submit');
+})
+
+// Get the page header
+// Assert that the element has a specific CSS property value
+
+test('Attribute Assertion: toHaveCSS',async({ page }) =>{
+  await page.goto(BASE_URL);
+  const header = page.locator('.header-logo');
+  await expect(header).toHaveCSS('font-size','12px');
+})
+
+  // Get the register button
+  // Assert that the element has the expected ID
+
+test('Attributes Assertion: toHaveId', async ({ page }) => {
+  await page.goto(REGISTER_URL);
+  const registerButton = page.locator('#register-button');
+  await expect(registerButton).toHaveId('register-button');
+});
+
+// ============================================
+// COUNT ASSERTIONS
+// ============================================
+
+// Get all product items on the home page
+// Assert that the number of products matches expected count
+
+test('Count assertion: toHaveCount',async({ page })=>{
+  await page.goto(BASE_URL);
+  const products =page.locator('.product-item');
+  await expect(products).toHaveCount(6);
+})
+
+//================================================
+// ROLE ASSERTIONS
+//================================================
+
+// Get the login button
+// Assert that the element has the 'button' role
+
+test('Role Assertion: toHaveRole', async ({ page }) => {
+  await page.goto(LOGIN_URL);
+  const loginButton = page.locator('input[value="Log in"]');
+  await expect(loginButton).toHaveRole('button');
+})
+
+// Additional test to demonstrate role assertion with a different element
+
+// Get the registration link
+// Assert that the element has the 'link' role
+
+test('Role Assertion: toHaveRole with link', async ({ page }) => {
+  await page.goto(BASE_URL);
+  const registerLink = page.locator('a[href="/register"]');
+  await expect(registerLink).toHaveRole('link');
+
+  await page.close();
+})
+
+
