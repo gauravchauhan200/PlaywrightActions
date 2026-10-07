@@ -1,9 +1,27 @@
+/*
+
+Pre-requisite:  Install the xlsx Library
+    npm install xlsx
+	
+
+*/
+
 import { test, expect } from '@playwright/test';
 import fs from 'fs';
+import * as XLSX from 'xlsx';
 
-//Reading data from json
-const jsonPath="testdata/data.json";
-const loginData:any=JSON.parse(fs.readFileSync(jsonPath,'utf-8'));
+//Loaded excel file
+//file--> workbook---sheets--rows & columns
+
+const excelPath="testdata/data.xlsx";
+const workbook=XLSX.readFile(excelPath);
+const sheetNames=workbook.SheetNames[0];
+const worksheet=workbook.Sheets[sheetNames];
+
+//convert sheet into json
+
+const loginData:any=XLSX.utils.sheet_to_json(worksheet);
+console.log(loginData);
 
 //main test
 test.describe('Login data driven test', async()=> {
@@ -32,7 +50,4 @@ test.describe('Login data driven test', async()=> {
             });
         }
 
-
-
 });
-
