@@ -47,6 +47,7 @@ test('Return value from test.step()', async ({ page }) => {
 
   const username = await test.step('Get Username', async () => {
     return 'standard_user';
+    
   });
 
   await test.step('Login', async () => {
