@@ -42,8 +42,34 @@ test('Clip Screenshot',async({ page })=>{
             height:400
         }
     });
-
-    
-
 })
+
+// 5. screenshot of specific element
+
+test('Element Screenshot',async({ page })=>{
+
+        const logo = page.locator('.navbar__brand');    //logo 
+        await logo.screenshot({path: 'screenshots/05-logo.png'});
+    })
+
+//6. Screenshot after scrolling
+
+test('Screenshot after scrolling',async({ page })=>{
+
+    await page.evaluate(()=> window.scrollBy(0,600));
+    await page.screenshot({ path: 'screenshots/06-scroll.png'});
+})
+
+//7. Mask Sensitive Elements
+
+test('Screenshot with Mask', async ({ page }) => {
+
+  const searchBox = page.locator('.DocSearch-Button');
+
+  await page.screenshot({
+    path: 'screenshots/07-mask.png',
+    mask: [searchBox]
+  });
+
+});
 
