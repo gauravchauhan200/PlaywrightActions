@@ -25,3 +25,30 @@ test('Capture Trace Manually', async ({ }, testInfo) => {
         snapshots: true,
         sources: true
     });
+     const page = await context.newPage();
+
+    await page.goto('https://www.demoblaze.com/index.html');
+    await page.getByRole('link', { name: 'Log in' }).click();
+
+    await page.locator('#loginusername').fill('pavanol');
+    await page.locator('#loginpassword').fill('test@123'); //password incorrect
+    await page.getByRole('button', { name: 'Log in' }).click();
+
+    await expect(page.getByRole('link', { name: 'Log out' })).toBeVisible();
+    await expect(page.locator('#nameofuser')).toContainText('Welcome pavanol');
+
+
+    const tracePath = `traces/trace-${Date.now()}.zip`;  // will use this path later to attach to report
+
+    await context.tracing.stop({
+        path: tracePath
+    });
+
+    await testInfo.attach('Playwright Trace', {
+        path: tracePath,
+        contentType: 'application/zip'
+    });
+
+    await browser.close();
+
+});
