@@ -7,7 +7,7 @@
 # https://shop.polymer-project.org/
 # https://sdetqa.vercel.app/login_app      //Eg: cookies
 # https://ui.vision/demo/webtest/frames/   //frames
-
+# https://www.demoblaze.com/index.html //screenshot  pavanol/test@123
 
 
 

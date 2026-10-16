@@ -24,14 +24,19 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
+    // testIdAttribute:'data-pw' //configured data-testid
+    
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    
     trace: 'on-first-retry',
-   // testIdAttribute:'data-pw' //configured data-testid
     headless: false,
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',  
 
   },
 
