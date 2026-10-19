@@ -11,4 +11,5 @@ await expect(page.getByRole('link',{name:'Log out'})).toBeVisible();
 await expect(page.locator('#nameofuser')).toContainText('Welcome pavanol');
 
 
+
 })
