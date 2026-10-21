@@ -19,7 +19,6 @@ test.describe('demowebshop Home Page Tests', () => {
 test.describe('demowebshop User Login Tests', () => {
 
     test('@P1 @Sanity Login test with in-valid credentials', async ({ page }) => {
-
         await test.step('Open Login Page', async () => {
             await page.goto('https://demowebshop.tricentis.com/login');
         });
@@ -37,7 +36,6 @@ test.describe('demowebshop User Login Tests', () => {
             // Assert user is still on the login page
             await expect(page).toHaveURL('https://demowebshop.tricentis.com/login');
         });
-
     });
 
 
@@ -64,6 +62,7 @@ test.describe('demowebshop User Login Tests', () => {
     })
 
     test.skip('@P2 @Regression demowebshop search test', async ({ page }) => {
+
         await page.goto('https://demowebshop.tricentis.com/login');
         await page.locator('#small-searchterms').fill("laptop");  // fill the text in search box
         await page.locator("input[value='Search']").click();      // click on the button
@@ -72,6 +71,7 @@ test.describe('demowebshop User Login Tests', () => {
 
     //Failing test
     test('@P1 @Sanity demoblaze Login test', async ({ page }) => {
+
         await page.goto('https://www.demoblaze.com/index.html');
         await page.getByRole('link', { name: 'Log in' }).click();
         await page.locator('#loginusername').fill('pavanol');
@@ -81,6 +81,5 @@ test.describe('demowebshop User Login Tests', () => {
         await expect(page.locator('#nameofuser')).toContainText('Welcome pavanol');
 
     });
-
 
 })

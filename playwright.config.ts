@@ -21,9 +21,23 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  
+      /* Reporter to use. See https://playwright.dev/docs/test-reporters */
+    //  reporter: 'html',
+   // reporter: [['html',{open:'always',outputFolder:'my-reports'}]],  // Added by gaurav for seprate folder report
+
+reporter: [
+    ['list'],                           // Detailed console output
+    ['line'],                           // One-line progress output
+    ['dot'],                            // Minimal console output
+    ['html', { open: 'always', outputFolder: 'my-reports' }],        // HTML Report
+    ['json', { outputFile: 'my-reports/results.json' }], // JSON Report
+    ['junit', { outputFile: 'my-reports/results.xml' }]  // JUnit XML Report
+    ['./tests/CustomReporter.ts', { customOption: 'some value' }], // Custom reporter
+    ['allure-playwright', { outputFolder: 'allure-results' }]  // Allure Report
+  ],
+
+      /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
@@ -33,10 +47,10 @@ export default defineConfig({
     
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     
-    //trace: 'on-first-retry',
-    headless: false,
-    //screenshot: 'only-on-failure',
-    //video: 'retain-on-failure',  
+      trace: 'on-first-retry',
+      headless: false,
+      screenshot: 'only-on-failure',
+      // video: 'retain-on-failure',  
 
   },
 
