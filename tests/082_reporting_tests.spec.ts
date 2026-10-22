@@ -56,7 +56,7 @@ test.describe('demowebshop User Login Tests', () => {
 
         await test.step('Verify Successful Login', async () => {
             const logoutLink = page.locator('a[href="/logout"]');
-            await expect(logoutLink).toBeVisible({ timeout: 5000 });
+            await expect(logoutLink).toBeVisible({ timeout: 2000 });
 
         });
     })
