@@ -34,7 +34,7 @@ export default defineConfig({
    // ['json', { outputFile: 'my-reports/results.json' }], // JSON Report
   //  ['junit', { outputFile: 'my-reports/results.xml' }]  // JUnit XML Report
   //  ['./tests/CustomReporter.ts', { customOption: 'some value' }], // Custom reporter
-   // ['allure-playwright', { outputFolder: 'allure-results' }]  // Allure Report
+    ['allure-playwright', { outputFolder: 'allure-results' }]  // Allure Report
    ],
 
       /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
