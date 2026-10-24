@@ -4,6 +4,7 @@ import { LoginPage } from './pages/LoginPage';
 import { HomePage } from './pages/HomePage';
 import { CartPage } from './pages/CartPage';
 import { SignUpPage } from './pages/SignUpPage';
+import {HomePage1} from './pages/HomePage1';
 
 test.describe.configure({ mode: 'serial' });
 
