@@ -8,6 +8,7 @@
 # https://sdetqa.vercel.app/login_app      //Eg: cookies
 # https://ui.vision/demo/webtest/frames/   //frames
 # https://www.demoblaze.com/index.html //screenshot  pavanol/test@123
+# https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index
 
 
 
